@@ -1,23 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import Giscus from "@giscus/react";
+
+import "./App.css";
 
 function App() {
+  const projectRepo = process.env.REACT_APP_GISCUS_PROJECT_REPO;
+  const projectRepoId = process.env.REACT_APP_GISCUS_PROJECT_REPO_ID;
+  const discussionCategoryId =
+    process.env.REACT_APP_GISCUS_DISCUSSION_CATEGORY_ID;
+  const discussionCategoryName =
+    process.env.REACT_APP_GISCUS_DISCUSSION_CATEGORY_NAME;
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Giscus
+        id="comment-id"
+        repo={projectRepo}
+        repoId={projectRepoId}
+        category={discussionCategoryName}
+        categoryId={discussionCategoryId}
+        mapping="pathname"
+        reactionsEnabled="0"
+        emitMetadata="0"
+        inputPosition="top"
+        theme="light"
+        lang="en"
+        loading="lazy"
+      />
     </div>
   );
 }
